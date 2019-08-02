@@ -25,7 +25,7 @@
   delegate_to: undercloud_host
   shell: >
     source ~/stackrc &&
-    openstack stack output show -f shell overcloud HostsEntry |
+    openstack stack output show -f value -c output_value {{ overcloud_stack_name|default('overcloud') }} HostsEntry |
     grep overcloud.ctlplane.localdomain | awk '{print $1}' | head -n 1
   register: controllerip
 
