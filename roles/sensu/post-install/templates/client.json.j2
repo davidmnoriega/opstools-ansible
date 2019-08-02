@@ -12,8 +12,14 @@
     "openstack": {
       "auth_url": "{{ openstack_auth_url }}",
       "password": "{{ openstack_password }}",
-      "tenant_name": "{{ openstack_tenant_name }}",
-      "username": "{{ openstack_username }}"
+      "project_name": "{{ openstack_project_name }}",
+      "username": "{{ openstack_username }}",
+      "user_domain_name": "{{ openstack_user_domain_name }}",
+      "project_domain_name": "{{ openstack_project_domain_name }}",
+      "compute_api_version": "{{ openstack_compute_api_version }}",
+      "image_api_version": "{{ openstack_image_api_version }}",
+      "volume_api_version": "{{ openstack_volume_api_version }}",
+      "identity_api_version": "{{ openstack_identity_api_version }}"
     },
     "redact": [
       "auth",
