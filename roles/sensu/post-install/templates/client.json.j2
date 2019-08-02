@@ -15,6 +15,10 @@
       "tenant_name": "{{ openstack_tenant_name }}",
       "username": "{{ openstack_username }}"
     },
+    "redact": [
+      "auth",
+      "password"
+    ],
     "haproxy": {
      "auth": "{{ haproxy_data.stdout_lines[1] }}",
      "uristats": "{{ haproxy_data.stdout_lines[0] }}"
