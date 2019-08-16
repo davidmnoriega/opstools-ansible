@@ -37,6 +37,14 @@
     mode: 0740
   when: sensu_manage_handlers
 
+- name: Configure default handler
+  template:
+    src: handler.json.j2
+    dest: '{{sensu_config_path}}/handler.json'
+    owner: '{{ sensu_owner }}'
+    group: '{{ sensu_group }}'
+  when: sensu_manage_handlers
+
 - name: Configure sensu handlers
   template:
     src: 'templates/{{ item }}.json.j2'

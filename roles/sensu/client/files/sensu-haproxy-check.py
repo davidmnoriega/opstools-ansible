@@ -102,11 +102,13 @@ def main(options):
                 if options.data_by_service:
                     data = {'source': 'HAProxy.{}'.format(service),
                             'name': host, 'output': status_str,
-                            'status': status}
+                            'status': status,
+                            'handle': True}
                 else:
                     data = {'source': 'HAProxy.{}'.format(host),
                             'name': service, 'output': status_str,
-                            'status': status}
+                            'status': status,
+                            'handle': True}
                 errors += send_data(
                     options.sensu_uri,
                     data,

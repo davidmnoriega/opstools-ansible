@@ -1,5 +1,7 @@
 "check-{{ check.name }}": {
     "command": "systemctl is-active {{ check.service|default("openstack-" + check.name) }} || exit 2",
-    "subscribers": {{ check.subscribers|default(["overcloud-" + check.name])|to_json }}, 
-    "interval": {{ check.interval|default(60) }}
+    "subscribers": {{ check.subscribers|default(["overcloud-" + check.name])|to_json }},
+    "interval": {{ check.interval|default(60) }},
+    "timeout": 10,
+    "ttl": 90
 }

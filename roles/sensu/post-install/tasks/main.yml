@@ -15,6 +15,20 @@
       cfg_param: openstack_password
     - rc_param: OS_TENANT_NAME
       cfg_param: openstack_tenant_name
+    - rc_param: OS_PROJECT_NAME
+      cfg_param: openstack_project_name
+    - rc_param: OS_USER_DOMAIN_NAME
+      cfg_param: openstack_user_domain_name
+    - rc_param: OS_PROJECT_DOMAIN_NAME
+      cfg_param: openstack_project_domain_name
+    - rc_param: COMPUTE_API_VERSION
+      cfg_param: openstack_compute_api_version
+    - rc_param: OS_IMAGE_API_VERSION
+      cfg_param: openstack_image_api_version
+    - rc_param: OS_VOLUME_API_VERSION
+      cfg_param: openstack_volume_api_version
+    - rc_param: OS_IDENTITY_API_VERSION
+      cfg_param: openstack_identity_api_version
 
 - name: Set facts from result data
   set_fact: {'{{ item.item.cfg_param }}': '{{ item.stdout }}'}
@@ -25,7 +39,7 @@
   delegate_to: undercloud_host
   shell: >
     source ~/stackrc &&
-    openstack stack output show -f shell overcloud HostsEntry |
+    openstack stack output show -f value -c output_value {{ overcloud_stack_name|default('overcloud') }} HostsEntry |
     grep overcloud.ctlplane.localdomain | awk '{print $1}' | head -n 1
   register: controllerip
 

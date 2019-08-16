@@ -1,0 +1,17 @@
+{
+  "handlers": {
+    "default": {
+      "type": "set",
+      "handlers": [
+        "{{ sensu_socket_handler_name }}"
+      ]
+    },
+    "{{ sensu_socket_handler_name }}": {
+      "type": "{{ sensu_socket_handler_type }}",
+      "socket": {
+        "host": "{{ sensu_socket_handler_host }}",
+        "port": {{ sensu_socket_handler_port }}
+      }
+    }
+  }
+}
